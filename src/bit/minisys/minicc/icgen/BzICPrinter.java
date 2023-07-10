@@ -3,16 +3,17 @@ package bit.minisys.minicc.icgen;
 import bit.minisys.minicc.parser.ast.ASTIdentifier;
 import bit.minisys.minicc.parser.ast.ASTIntegerConstant;
 import bit.minisys.minicc.parser.ast.ASTNode;
+import bit.minisys.minicc.parser.ast.ASTStringConstant;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class ExampleICPrinter {
+public class BzICPrinter {
     private final List<Quat> quats;
 
-    public ExampleICPrinter(List<Quat> quats) {
+    public BzICPrinter(List<Quat> quats) {
         this.quats = quats;
     }
 
@@ -44,6 +45,10 @@ public class ExampleICPrinter {
             return String.valueOf(((ASTIntegerConstant) node).value);
         } else if (node instanceof TemporaryValue) {
             return ((TemporaryValue) node).name();
+        } else if (node instanceof ASTStringConstant) {
+            return ((ASTStringConstant) node).value;
+        } else if (node instanceof BzLabelGenerator) {
+            return ((BzLabelGenerator) node).name();
         } else {
             return "";
         }

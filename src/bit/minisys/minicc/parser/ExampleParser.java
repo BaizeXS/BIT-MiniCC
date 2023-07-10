@@ -258,8 +258,6 @@ public class ExampleParser implements IMiniCCParser {
 		return pd;
 	}
 
-	
-
 	//CODE_BLOCK --> '{' STMTS '}'
 	public ASTCompoundStatement codeBlock() {
 		matchToken("'{'");
